@@ -1,0 +1,34 @@
+{
+  "name": "package",
+  "version": "0.0.0",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "install": "ln -fns ../app/scripts/config node_modules",
+    "postinstall": "bower install"
+  },
+  "devDependencies": {
+    "babelify": "^7.2.0",
+    "browser-sync": "^2.0.1",
+    "browserify": "^8.1.3",
+    "del": "^2.2.0",
+    "gulp": "^3.8.0",
+    "gulp-htmlmin": "^1.3.0",
+    "gulp-imagemin": "^2.1.0",
+    "gulp-minify-css": "^0.4.5",
+    "gulp-uglify": "^1.1.0",
+    "gulp-usemin": "^0.3.16",
+    "insert-css": "^0.2.0",
+    "reactify": "^1.1.1",
+    "run-sequence": "^0.3.6",
+    "stylus": "^0.53.0",
+    "vinyl-source-stream": "^0.1.1"
+  },
+  "browserify-shim": {},
+  "dependencies": {},
+  "description": "配置一个基础的框架。 让使用者只需要 在指定目录添加代码即可完成自动化编译， 打包， 等过程。",
+  "main": "gulpfile.js",
+  "author": "",
+  "license": "ISC"
+}

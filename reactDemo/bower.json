@@ -1,0 +1,21 @@
+{
+  "name": "package",
+  "description": "配置一个基础的框架。 让使用者只需要 在指定目录添加代码即可完成自动化编译， 打包， 等过程。",
+  "main": "gulpfile.js",
+  "authors": [
+    "侯林江 <linjiang.hou@baidao.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "react": "~0.14.7"
+  }
+}
