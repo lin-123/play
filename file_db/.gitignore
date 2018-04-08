@@ -1,0 +1,10 @@
+<<<<<<< HEAD
+node_modules
+*.log
+*.js
+*.*.js
+*.*.*.js
+*.*.*.*.js
+=======
+*.js
+>>>>>>> add gitignore
