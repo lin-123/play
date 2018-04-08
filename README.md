@@ -1,7 +1,7 @@
 # play exploration for fun
 
-## [thriftdemo]() use thriftdemo and banchmark
+## [thriftdemo](./tree/master/thriftdemo) use thriftdemo and banchmark
 
-## [thriftmock]() mock thrift http transport
+## [thriftmock](./tree/master/thriftmock) mock thrift http transport
 
-## [file_db]()
+## [file_db](./tree/master/file_db)
