@@ -20,7 +20,7 @@
     if(trueRes) {
       res = trueRes
     }
-    res.__proto__ = func.prototype
+    res.__proto__ = func.prototype || null
     return res
   }
 
@@ -73,3 +73,19 @@
     kaka.hasOwnProperty('say')  // false
   )
   ```
+
+- 原型链
+    * 就是一个对象A有原型对象B，B也是一个对象，也有自己的原型C，一直向上追溯，直到原型对象为 null。
+    * 简言之 A.cProto = A.__proto__.__proto__.cProto
+    * JavaScript 中所有的对象都继承自 Object 对象。 Object.prototype.prototype = undefined
+      ```javascript
+      // js 中null也是对象
+      console.log(typeof null) // object
+
+      const obj = {}
+      console.log(obj.__proto__.constructor) // ƒ Object() { [native code] }
+      console.log(obj.__proto__.__proto__) // null
+      ```
+
+
+
