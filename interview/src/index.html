@@ -1,13 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
 
-  <script src="./higherOrderFunc.js"></script>
+  <script>
+    // fn(a)(b)(c) -> fn(a,b,c)
+    function unCurry(fn) {
+      const
+      return fn.length <= args.length ?
+        fn(...args) :
+        curry.bind(null, fn, ...args)
+    }
+
+    function sum(a, b, c) {
+      return a + b + c
+    }
+
+    const sumCurry = curry(sum)
+    console.log(sumCurry(1)(2)(3))
+  </script>
 </body>
+
 </html>

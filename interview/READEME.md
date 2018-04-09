@@ -6,13 +6,6 @@
 
 ## [原型对象， 就是prototype对象](./prototype.md)
 
-## 闭包
-
-> 指的是有权访问另一个函数作用域中的变量的函数。 <br/> 通俗点： 就是A函数内嵌套了一个B函数，并且B函数访问了A函数内的变量。
-
-- 涉及到的知识点： 作用域链。如果对这个理解的比较透彻就没问题了
-- 缺点： 多度使用闭包会导致内存占用过多， 所以只在必要[非用不可]的时候才选择用闭包。
-
 ## [递归](./recusive.md)
 
 ## 函数
@@ -88,7 +81,43 @@
       say.apply(obj, [', welcome'])
       ```
 
-## 高阶函数
+
+### 闭包
+
+> 指的是有权访问另一个函数作用域中的变量的函数。 <br/> 通俗点： 就是A函数内嵌套了一个B函数，并且B函数访问了A函数内的变量。
+
+- 涉及到的知识点： 作用域链。如果对这个理解的比较透彻就没问题了
+- 缺点： 多度使用闭包会导致内存占用过多， 所以只在必要[非用不可]的时候才选择用闭包。
+
+### 高阶函数
+
+> 函数可以作为参数被传递；函数可以作为返回值输出。
+
+#### 柯里化
+
+> 在计算机科学中，柯里化（英语：Currying），又译为卡瑞化或加里化，是把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的函数，并且返回接受余下的参数而且返回结果的新函数的技术。 <br/>
+说人话就是： `fn(a,b,c) -> fn(a)(b)(c)`
+
+```javascript
+function curry(fn, ...args) {
+  return fn.length <= args.length ?
+    fn(...args)
+    :curry.bind(null, fn, ...args)
+}
+function sum(a,b,c){
+  return a + b + c
+}
+
+const sumCurry = curry(sum)
+console.log(sumCurry(1)(2)(3))
+```
+
+> 反柯里化 `fn(a,b,c) -> fn(a)(b)(c)`
+
+```javascript
+
+```
+
 
 ### 附录
 - [javascript高阶函数介绍](https://www.imys.net/20160530/javascript-advanced-functions.html)
