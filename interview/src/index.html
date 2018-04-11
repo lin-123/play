@@ -5,9 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style type="text/css">
+    td{
+      width: 10px;
+      height: 10px;
+      background: #aaa;
+      margin: 1px;
+    }
+    .bgWhite{
+      background: #eee;
+    }
+  </style>
 </head>
-<body>
 
-  <script src="./higherOrderFunc.js"></script>
+
+
+<body>
+  <div id="app">
+    <table>
+      <tr v-for="(cols, x) in matrix">
+        <td v-for="(flag, y) in cols" @click="changeBg(x,y)" v-bind:class="{bgWhite: flag}">
+        {{x}},{{y}}
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script type="text/javascript">
+  const config = {
+    row: 17,
+    col: 25
+  }
+  const app = new Vue({
+    el: '#app',
+    data: () => ({
+      matrix: [],
+    }),
+    methods: {
+      changeBg(x,y) {
+        const row = this.matrix[x]
+        row.splice(y, 1, row[y]?0:1)
+        this.matrix.splice(x, 1, row)
+
+        localStorage.matrix = JSON.stringify(this.matrix)
+      },
+      initMatrix() {
+        // get from storage
+        const store = localStorage.matrix
+        console.log(store)
+        if(store) return this.matrix = JSON.parse(store);
+        const res = []
+        for (var i = config.row - 1; i >= 0; i--) {
+          const row = []
+          for (var j = config.col - 1; j >= 0; j--) {
+            row.push(0)
+          }
+          res.push(row)
+        }
+        this.matrix = res
+      }
+    },
+    mounted(){
+      this.initMatrix()
+      console.log(this.matrix)
+
+    },
+  })
+
+  const matrix = "[[0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,1,1,1,1,1,1,1],[0,0,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,1,1,1,1,1,1,1],[0,1,0,0,0,1,0,1,1,0,0,0,1,0,0,0,1,1,1,1,0,0,0,0,1],[0,1,1,0,0,1,1,0,1,0,0,0,0,0,0,0,1,0,1,1,1,1,1,1,1],[1,1,1,0,1,1,1,0,1,1,0,0,0,0,0,1,1,0,1,1,1,1,1,1,1],[0,1,1,0,0,1,1,0,0,1,0,0,0,0,0,1,0,0,1,1,0,0,0,0,0],[0,1,1,0,0,1,1,0,0,1,1,0,0,0,1,1,0,1,1,0,0,0,1,0,0],[0,1,1,0,0,1,1,0,0,0,1,0,0,0,1,0,0,1,1,0,1,1,1,1,1],[0,1,1,0,0,1,1,0,0,0,1,1,0,1,1,0,0,1,1,0,1,1,1,1,1],[0,1,1,0,0,1,1,0,0,0,0,1,0,1,0,0,0,1,1,0,1,0,1,0,1],[0,1,1,0,0,1,1,0,0,0,0,1,1,1,0,0,1,1,1,0,1,0,1,0,1],[0,1,1,0,0,1,1,0,0,0,0,0,1,0,0,0,1,1,1,0,1,1,1,1,1],[0,1,1,0,0,1,1,0,0,0,0,0,0,0,1,0,1,1,0,0,1,1,1,1,1],[0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,1,1,0,0,1,0,1,0,1],[1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,1,1,0,0,0,1,1,1,1,1],[1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,1,1,0,0,0,1,1,1,1,1]]"
+
+  </script>
 </body>
 </html>
